@@ -63,12 +63,14 @@ public class MyFirstSeleniumTestCase {
 		//get the text from the webelement
 		String getUserNameText = userNameOnLoggedInPage.getText();
 
+		//Verify if user has sucessfully logged in
 		Assert.assertEquals("testuser", getUserNameText, "User name does not match");
 
 	}
 	
 	@AfterMethod
 	public void tearDown() {
+		//Close the browser
 		wd.quit();
 	}
 
