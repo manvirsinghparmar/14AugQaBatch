@@ -29,7 +29,7 @@ public class MyFirstSeleniumTestCase {
 		wd = new ChromeDriver();
 
 		// Get the URL of the website that we intend to test
-		wd.get("https://demoqa.com/login");
+		wd.get("https://demoqa.com/automation-practice-form");
 
 		// maximise the browser window
 		wd.manage().window().maximize();
@@ -40,38 +40,21 @@ public class MyFirstSeleniumTestCase {
 	public void loginToToolsQA() {
 
 		// Way to identify the webelements on a DOM
-		WebElement userName = wd.findElement(By.cssSelector("#userName"));
-		WebElement password = wd.findElement(By.cssSelector("#password"));
-		WebElement loginButton = wd.findElement(By.cssSelector("#login"));
-
-		// Enter text in the username and password input field
-		userName.sendKeys("testuser");
-		password.sendKeys("Password@123");
-
-		// Click on login button
-		loginButton.click();
-
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		WebElement userNameOnLoggedInPage = wd.findElement(By.cssSelector("#userName-value"));
-
-		//get the text from the webelement
-		String getUserNameText = userNameOnLoggedInPage.getText();
-
-		//Verify if user has sucessfully logged in
-		Assert.assertEquals("testuser", getUserNameText, "User name does not match");
-
-	}
+		WebElement firstName = wd.findElement(By.id("firstName"));
+		WebElement lastName=wd.findElement(By.id("lastName"));
+		WebElement emailInput=wd.findElement(By.id("userEmail"));
+		WebElement subject=wd.findElement(By.cssSelector("div.subjects-auto-complete__value-container.subjects-auto-complete__value-container--is-multi.css-1hwfws3"));
+		WebElement currentAddress=wd.findElement(By.xpath("//textarea[@id='currentAddress']"));
+		
+		firstName.sendKeys("Wiolet");
+		lastName.sendKeys("Malik");
+		emailInput.sendKeys("abc@gmail.com");
+		subject.sendKeys("Learning automation");
+		currentAddress.sendKeys("Canada");
 	
-	@AfterMethod
-	public void tearDown() {
-		//Close the browser
-		wd.quit();
+		
+
 	}
+
 
 }
