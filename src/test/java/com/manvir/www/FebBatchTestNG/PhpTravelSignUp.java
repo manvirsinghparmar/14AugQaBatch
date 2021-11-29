@@ -46,7 +46,7 @@ public class PhpTravelSignUp {
 		
 		firstName.sendKeys("Manvir");
 		lastName.sendKeys("Singh");
-		phoneNumber.sendKeys("6472152995");
+		phoneNumber.sendKeys("6472152994");
 		email.sendKeys("msp@itm.com");
 		password.sendKeys("Password@123");
 		signUpButton.click();
