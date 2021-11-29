@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -38,6 +39,7 @@ public class PhpTravelSignUp {
 		WebElement password=driver.findElement(By.cssSelector("input[name='password']"));
 		WebElement acceptCookieButton=driver.findElement(By.cssSelector("div.cc-compliance button"));
 		WebElement signUpButton = driver.findElement(By.cssSelector("div.form-group.mt-3 button"));
+		WebElement selectAccountType=driver.findElement(By.id("account_type"));
 		
 		//action on webelement
 		
@@ -47,9 +49,13 @@ public class PhpTravelSignUp {
 		firstName.sendKeys("Manvir");
 		lastName.sendKeys("Singh");
 		phoneNumber.sendKeys("6472152994");
-		email.sendKeys("msp@itm.com");
+		email.sendKeys("msp21@itm.com");
 		password.sendKeys("Password@123");
-		signUpButton.click();
+		
+		Select select=new Select(selectAccountType);
+		select.selectByVisibleText("Customer");
+		
+		signUpButton.submit();
 
 	}
 
