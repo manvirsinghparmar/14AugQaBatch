@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ImplicitWait {
+public class Iframes {
 
 	WebDriver driver;
 
@@ -21,28 +21,38 @@ public class ImplicitWait {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 
-		//Implemented Implicit wait
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://demoqa.com/login");
+		driver.get("https://demoqa.com/frames");
 
 	}
 
 	@Test
-	public void exampleOfImplicitWait() {
+	public void switchToIframe() {
 
-		WebElement contactLink = driver.findElement(By.id("userName"));
-		WebElement header = driver.findElement(By.id("password"));
-		contactLink.sendKeys("pivot_academy");
-		header.sendKeys("Password@123");
-		driver.findElement(By.id("login")).click();
-		System.out.println(driver.findElement(By.id("userName-value")).getText());
+		// Switch to frame using index
+		// driver.switchTo().frame(5);
+
+		
+		//Switch to frame
+		driver.switchTo().frame(driver.findElement(By.id("frame1")));
+
+		System.out.println(driver.findElement(By.id("sampleHeading")).getText());
+		
+		//Switch to main application or Window
+		driver.switchTo().defaultContent();
+		
+		
+		//Switch to second frame
+		driver.switchTo().frame(driver.findElement(By.id("frame2")));
+		
+		System.out.println(driver.findElement(By.id("sampleHeading")).getText());
 
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		// driver.quit();
+		driver.quit();
 
 	}
 
