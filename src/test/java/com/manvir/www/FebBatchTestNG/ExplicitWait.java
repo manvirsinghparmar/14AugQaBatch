@@ -1,7 +1,5 @@
 package com.manvir.www.FebBatchTestNG;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,7 +26,7 @@ public class ExplicitWait {
 	}
 
 	@Test
-	public void exampleOfImplicitWait() {
+	public void exampleOfExplicitWait() {
 
 		WebElement contactLink = driver.findElement(By.id("userName"));
 		WebElement header = driver.findElement(By.id("password"));
